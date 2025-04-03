@@ -1,0 +1,16 @@
+version: '4'
+services:
+  mongodb:
+    image: mongo:7.0.5
+    container_name: mongodb
+    ports:
+      #mongodb container exposed on this port:mongodb running on this port
+      - "27017:27017"
+    #for declaring mongodb database details
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: product_service
+    volumes:
+      #for storing the necessary files or data in file system, in case container is stopped. Otherwise, all data will be lost.
+      - ./data:/data/db
